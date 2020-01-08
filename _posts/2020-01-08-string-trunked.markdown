@@ -2,9 +2,9 @@
 layout: post
 title:  "记因string使用不当引起的线上服务崩溃"
 date:   2019-03-23 21:03:36 +0530
-categories: std::string char []
+categories: std::string
 ---
-直接将把char[]赋给了string, 而没有使用string.assign(x,sizeof(x)),以及 string(char x[], sizeof(x)) 引起的一场悲剧...... 
+直接使用赋值号将字符数组赋给了string, 而没有使用string.assign(char_array,sizeof(char_array)),以及 string(char_array, sizeof(char_array)) 引起的一场悲剧...... 
 
 ```c++
 
