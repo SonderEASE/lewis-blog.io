@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>因string使用不当引起的线上服务崩溃</title>
+</head>
+<body>
+	<main class="container">
+		<section class="about">
+			<img src="/assets/portfolio.png" alt="刘易斯 Lewis">
+			<h2>刘易斯 Lewis</h2>
+			<p class="tagline">Software Engineer</p>
+			<ul class="social">
+                
+				<a href="https://github.com/SonderEASE"><li><i class="icon-github-circled"></i></li></a>
+                
+                
+				<a href="https://www.linkedin.com/in/SonderEASE"><li><i class="icon-linkedin-squared"></i></li></a>
+                
+                
+                <a href="https://twitter.com/SonderEASE"><li><i class="icon-twitter-squared"></i></li></a>
+                
+			</ul>
+			<p>&copy; 2019</p>
+		</section>
+		<section class="content">
+			
+<div class="post-container">
+  <a class="post-link" href="/std::string/2020/01/06/string-trunked.html">
+    <h2 class="post-title">因string使用不当引起的线上服务崩溃</h2>
+  </a>
+  <div class="post-meta">
+    <ul class="post-categories">
+      
+      <li>std::string</li>
+      
+    </ul>
+    <div class="post-date"><i class="icon-calendar"></i>Jan 6, 2020</div>
+  </div>
+  <div class="post">
+    <p>直接使用赋值号将字符数组赋给了string, 而没有使用string.assign(char_array,sizeof(char_array)),以及 string(char_array, sizeof(char_array)) 引起的一场悲剧……</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cm">/* bad example */</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">CreateRemotePeerId</span><span class="p">(){</span>
+    <span class="kt">char</span> <span class="n">remote_sha</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">remote_peerid</span><span class="p">;</span>
+
+    <span class="c1">//do sth to format remote_sha
+</span>
+    <span class="n">remote_peerid</span> <span class="o">=</span> <span class="n">remote_sha</span><span class="p">;</span> 
+    <span class="c1">// 就是这里,悲剧发生了, 因为remote_sha中可能有'\0'字符, 直接赋值就会导致string被截断.
+</span>
+    <span class="k">return</span> <span class="n">remote_peerid</span><span class="p">;</span>  
+
+<span class="p">}</span>
+
+<span class="cm">/* good example */</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">CreateRemotePeerId</span><span class="p">(){</span>
+    <span class="kt">char</span> <span class="n">remote_sha</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">remote_peerid</span><span class="p">;</span>
+
+    <span class="c1">//do sth to format remote_sha
+</span>
+    <span class="n">remote_peerid</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">remote_sha</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">remote_sha</span><span class="p">));</span> 
+    <span class="c1">//or   remote_peerid = std::string(remote_sha, sizeof(remote_sha));
+</span>    <span class="k">return</span> <span class="n">remote_peerid</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="cm">/* intuitive example */</span>
+<span class="kt">int</span> <span class="n">main</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">src</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">'1'</span><span class="p">,</span><span class="sc">'\0'</span><span class="p">,</span> <span class="sc">'2'</span><span class="p">,</span><span class="sc">'3'</span><span class="p">,</span><span class="sc">'4'</span><span class="p">};</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">bad_dst</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">good_dst1</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">src</span><span class="p">));</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">good_dst2</span><span class="p">;</span>
+    <span class="n">good_dst2</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">sizof</span><span class="p">(</span><span class="n">src</span><span class="p">));</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">bad_dst</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">good_dst1</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">good_dst2</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="c1">//out put
+</span>    <span class="c1">//1
+</span>    <span class="c1">//1234
+</span>    <span class="c1">//1234
+</span><span class="p">}</span>
+
+</code></pre></div></div>
+
+<font face="微软雅黑">上学的时候看C++各种书籍, 说过字符数组与string之间转换要注意处理方式的数不胜数, 没想到最终还是踩了这个坑. 这次错误的赋值直接导致了错误的删除逻辑, 在积累了一周后线上服务大面积告警, 算是一次事故了, 难受呀。 大佬们说不要有心理负担，我觉得负担还是要有，但定要在将来要让这些负担转换为自己的储备。希望自己可以胆大心细加油干~</font>
+
+  </div>
+  
+</div>
+
+		</section>
+	</main>
+	
+</body>
+</html>

@@ -1,7 +1,7 @@
 ---
 layout: null
 ---
-{%-if site.plainwhite.sitemap -%}
+{%if site.plainwhite.sitemap %}
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -13,13 +13,13 @@ layout: null
             <lastmod>2019-06-07T00:00:00+00:00</lastmod>
             <priority>1.00</priority>
         </url>
-        {%- for post in site.posts -%}
+        {% for post in site.posts %}
             <url>
                 <loc>{{ site.url }}{{ post.url }}</loc>
                 <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
                 <changefreq>weekly</changefreq>
                 <priority>0.80</priority>
             </url>
-        {%- endfor -%}
+        {% endfor %}
     </urlset>    
-{%- endif -%}
+{% endif %}
