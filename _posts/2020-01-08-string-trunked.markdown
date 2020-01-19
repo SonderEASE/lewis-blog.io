@@ -4,7 +4,7 @@ title:  "因string使用不当引起的线上服务崩溃"
 date:   2020-01-06 22:03:36 +0530
 categories: std::string
 ---
-&#8195;&#8195;直接使用赋值号将字符数组赋给了string, 而没有使用string.assign(char_array,sizeof(char_array)),以及 string(char_array, sizeof(char_array)) 引起的一场悲剧...... 
+&#8195;&#8195;直接使用赋值号将字符数组赋给了string, 而没有使用string.assign(char_array,sizeof(char_array)),以及 string(char_array, sizeof(char_array)) 引起的一场悲剧:persevere:...... 
 
 ```c++
 
@@ -55,4 +55,4 @@ int main () {
 
 ```
 
-<font face="微软雅黑" >上学的时候看C++各种书籍, 说过字符数组与string之间转换要注意处理方式的数不胜数, 没想到最终还是踩了这个坑. 这次错误的赋值直接导致了错误的删除逻辑, 在积累了一周后线上服务大面积告警, 算是一次事故了, 难受呀。 大佬们说不要有心理负担，我觉得负担还是要有，但定要在将来要让这些负担转换为自己的储备。希望自己可以胆大心细加油干~</font>
+<font face="微软雅黑" >上学的时候看C++各种书籍, 强调过字符数组与string之间转换要注意处理方式的数不胜数, 没想到最终还是踩了这个坑. 这次错误的赋值直接导致了错误的删除逻辑, 在积累了一周后线上服务大面积告警, 算是一次事故了, 难受。 大佬们说不要有心理负担，我觉得负担还是要有，但要让这些负担转换为自己的储备。希望自己可以胆大心细加油干~ :muscle:</font>
