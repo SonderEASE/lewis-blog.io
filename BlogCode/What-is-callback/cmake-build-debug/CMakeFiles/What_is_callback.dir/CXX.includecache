@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lewis/CLionProjects/BlogCode/What-is-callback/Hotel.hpp
+string
+-
+vector
+-
+map
+-
+iostream
+-
+zconf.h
+-
+functional
+-
+
+/home/lewis/CLionProjects/BlogCode/What-is-callback/Passenger.hpp
+utility
+-
+Hotel.hpp
+/home/lewis/CLionProjects/BlogCode/What-is-callback/Hotel.hpp
+
+/home/lewis/CLionProjects/BlogCode/What-is-callback/main.cpp
+memory
+-
+Hotel.hpp
+/home/lewis/CLionProjects/BlogCode/What-is-callback/Hotel.hpp
+Passenger.hpp
+/home/lewis/CLionProjects/BlogCode/What-is-callback/Passenger.hpp
+

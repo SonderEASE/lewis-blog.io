@@ -1,0 +1,3 @@
+/home/lewis/CLionProjects/BlogCode/What-is-callback/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/lewis/CLionProjects/BlogCode/What-is-callback/cmake-build-debug/CMakeFiles/What_is_callback.dir
+/home/lewis/CLionProjects/BlogCode/What-is-callback/cmake-build-debug/CMakeFiles/edit_cache.dir
