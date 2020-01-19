@@ -52,7 +52,6 @@ int main () {
 #场景实现
 
 ```c++
-
 int main() {
     auto hotel = std::make_shared<Hotel>("wanda");
     auto Mia = std::make_shared<Passenger>("Mia", *hotel, 601);
@@ -69,13 +68,11 @@ int main() {
     return 0;
 }
 
-```
-```c++
-    //OrderWakeUpServer的实现 Hotel.hpp
-    using WakeUpMode = std::function<void()>;
-    void OrderWakeUpServer(int room_id, const WakeUpMode& mode) {
-        wake_lists.insert(std::make_pair(room_id, mode));
-    };
+//OrderWakeUpServer的实现 Hotel.hpp
+using WakeUpMode = std::function<void()>;
+void OrderWakeUpServer(int room_id, const WakeUpMode& mode) {
+    wake_lists.insert(std::make_pair(room_id, mode));
+};
 ```
 [Hotel类的代码链接](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/What-is-callback/Hotel.hpp)
 
