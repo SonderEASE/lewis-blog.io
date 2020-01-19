@@ -86,7 +86,7 @@ void OrderWakeUpServer(int room_id, const WakeUpMode& mode) {
 
 ## 同步回调
 
-下面的代码展示了如果给一个字符串数组按照长度排序. 代码调用了[sort](https://en.cppreference.com/w/cpp/algorithm/sort)进行排序, 并通过指定isShorter为参数,实现长度的比较.
+下面的代码展示了如何给一个字符串数组按照长度排序. 代码调用了[sort](https://en.cppreference.com/w/cpp/algorithm/sort)进行排序, 并通过指定isShorter为参数,实现长度的比较.
 ```c++
 bool isShorter(const string &s1, const string &s2) {
     return s1.size() < s2.size();
