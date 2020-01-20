@@ -14,11 +14,12 @@ public:
     using WakeUpMode = std::function<void()>;
 
 public:
-    static void Knock() {std::cout<<"咚咚咚!"<<std::endl;}
-    static void Call() {std::cout<<"滴铃铃!"<<std::endl;}
     void OrderWakeUpServer(int room_id, const WakeUpMode& mode) {
         wake_lists.insert(std::make_pair(room_id, mode));
     };
+    static void Knock() {std::cout<<"咚咚咚!"<<std::endl;}
+    static void Call() {std::cout<<"滴铃铃!"<<std::endl;}
+    
     void WakeUp(int room_id) {
         auto it = wake_lists.find(room_id);
         if(it != wake_lists.end()) it->second();

@@ -60,9 +60,11 @@ int main() {
     Mia->m_hotel.OrderWakeUpServer(Mia->room_id, []()->void {
         std::cout<<"Mia!!!\nMia!!!\nMia!!!"<<std::endl;
     });
+    // 当然Mia也可以选择酒店提供的叫醒方式, 比如敲门
+    Mia->m_hotel.OrderWakeUpServer(Mia->room_id, Hotel::Knock);
 
-    //假设这个wanda酒店非常的low, 他只提供8点整的叫醒服务.
-    //假设这里到8点了~ 叫醒住在601的mia,用她告诉酒店的方式
+    //这个wanda酒店非常的low, 他只提供8点整的叫醒服务.
+    //8点了~ 叫醒住在601的mia,用她告诉酒店的方式
     hotel->WakeUp(601);
 
     return 0;
