@@ -27,7 +27,7 @@ void A() {
     std::cout<<"output"<<std::endl;
 }
 
-B(function fn) {
+void B(function fn) {
     fn();
 }
 
@@ -57,7 +57,7 @@ int main() {
     auto Mia = std::make_shared<Passenger>("Mia", *hotel, 601);
 
     // Mia选择的叫醒方式是大喊三声Mia
-        Mia->m_hotel.OrderWakeUpServer(Mia->room_id, []()->void {
+    Mia->m_hotel.OrderWakeUpServer(Mia->room_id, []()->void {
         std::cout<<"Mia!!!\nMia!!!\nMia!!!"<<std::endl;
     });
 
