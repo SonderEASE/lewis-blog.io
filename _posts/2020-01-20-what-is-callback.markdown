@@ -4,7 +4,7 @@ title:  "了解回调函数"
 date:   2020-01-20 20:40:36 +0530
 categories: callback
 ---
-&#8195;&#8195;让我来试着讲清楚,什么是回调函数:stuck_out_tongue_closed_eyes:.
+让我来试着讲清楚,什么是回调函数:stuck_out_tongue_closed_eyes:.
 
 
 # 为什么写这篇文章
