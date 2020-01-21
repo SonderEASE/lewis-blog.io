@@ -1,8 +1,8 @@
 title: EASE BLOG
 author: GitHub User
 email: 496167612@qq.com
-description: > # this means to ignore newlines until "show_exerpts:"
-  A program should read like a book. It should have plot, rhythm, and delightful little turns of phrase. —— Knuth’s Literate Programming
+description: A program should read like a book. It should have plot, rhythm, and delightful little turns of phrase. —— Knuth’s Literate Programming > # this means to ignore newlines until "show_exerpts:"
+favicon: https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/tree/master/assets/portfolio.png
 show_excerpts: true # set to true to show excerpts on the homepage
 
 # Minima date format
@@ -18,20 +18,8 @@ plainwhite:
   social_links:
     twitter: SonderEASE
     github:  SonderEASE
-    linkedIn: in/SonderEASE
+    linkedIn: in/易斯-刘-514b29122
     rss: rss
-    # dribbble: jekyll
-    # facebook: jekyll
-    # flickr:   jekyll
-    # instagram: jekyll
-    # linkedin: jekyll
-    # pinterest: jekyll
-    # youtube: jekyll
-    # youtube_channel: UC8CXR0-3I70i1tfPg1PAE1g
-    # youtube_channel_name: CloudCannon
-    # telegram: jekyll
-    # googleplus: +jekyll
-    # microdotblog: jekyll
 
     # Mastodon instances
     # mastodon:
@@ -46,7 +34,6 @@ plainwhite:
 # - about.md
 
 # Build settings
-show_excerpts: true
 theme: plainwhite
 markdown: kramdown
 plugins:
