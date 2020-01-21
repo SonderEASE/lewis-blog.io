@@ -1,8 +1,8 @@
-title: EASE BLOG
-author: GitHub User
+title: SonderEASE
+author: SonderEASE
 email: 496167612@qq.com
 description: A program should read like a book. It should have plot, rhythm, and delightful little turns of phrase. —— Knuth’s Literate Programming > # this means to ignore newlines until "show_exerpts:"
-favicon: https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/tree/master/assets/portfolio.png
+favicon: https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/assets/portfolio.png
 show_excerpts: true # set to true to show excerpts on the homepage
 
 # Minima date format
