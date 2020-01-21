@@ -7,13 +7,13 @@ show_excerpts: true # set to true to show excerpts on the homepage
 
 # 菜单中的按钮
 navigation:
-  - name: Home
+  - name: 主页
     url: /
-  - name: Archive
+  - name: 归档
     url: /archive
-  - name: Tags
+  - name: 标签
     url: /tags
-  - name: Contact
+  - name: 联系
     url: /contact
 # Minima date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
