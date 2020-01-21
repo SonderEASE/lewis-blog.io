@@ -14,7 +14,7 @@ plainwhite:
   tagline: Software Engineer
   date_format: #"%b %-d, %Y"
   sitemap: true # set to true to generate sitemap.xml content
-
+  disqus_shortname: games
   # generate social links in footer
   social_links:
     twitter: SonderEASE
