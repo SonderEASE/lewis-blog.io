@@ -27,6 +27,16 @@ plainwhite:
     #   instance: example.com
     # - username: jekyll2
     #   instance: example.com
+    # 菜单中的按钮
+    navigation:
+    - name: 首页
+        url: /
+    - name: 关于
+        url: /about
+    - name: 归档
+        url: /archive
+    - name: 标签
+        url: /tags
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
