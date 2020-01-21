@@ -9,8 +9,6 @@ show_excerpts: true # set to true to show excerpts on the homepage
 navigation:
   - name: 首页
     url: /
-  - name: 关于
-    url: /about
   - name: 归档
     url: /archive
   - name: 标签
