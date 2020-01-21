@@ -20,7 +20,7 @@
                 <a href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}"><li><i class="icon-twitter-squared"></i></li></a>
                 {% endif %}
 			</ul>
-			<div class="navlist">
+			<ul class="navlist">
 				<nav>
 					{% for nav in site.navigation %}
 					{% if nav.url contains 'http://' or nav.url contains 'https://' %}
@@ -30,7 +30,7 @@
 					{% endif %}
 					{% endfor %}
 				</nav>
-			</div>
+			</ul>
 			<p>&copy; 2019</p>
 		</section>
 		<section class="content">
