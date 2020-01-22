@@ -2,7 +2,8 @@
 layout: post
 title:  "因string使用不当引起的线上服务崩溃"
 date:   2020-01-06 22:03:36 +0530
-categories: std::string
+tags:   std::string char[]
+categories: Code 
 ---
 直接使用赋值号将字符数组赋给了string, 而没有使用string.assign(char_array,sizeof(char_array)),以及 string(char_array, sizeof(char_array)) 引起的一场悲剧:persevere:...... 
 
