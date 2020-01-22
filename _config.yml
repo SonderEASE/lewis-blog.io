@@ -11,8 +11,8 @@ navigation:
     url: /
   - name: 归档
     url: /archive
-  - name: 标签
-    url: /tags
+  - name: 分类
+    url: /categories
   - name: 联系
     url: /contact
 # Minima date format
