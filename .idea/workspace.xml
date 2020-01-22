@@ -11,7 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8af63b8a-ca0d-4723-b5ad-7164956139f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_layouts/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2020-01-08-string-trunked.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-08-string-trunked.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2020-01-14-open-files.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-14-open-files.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2020-01-20-what-is-callback.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-20-what-is-callback.markdown" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

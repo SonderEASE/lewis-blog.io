@@ -3,7 +3,7 @@ layout: post
 title:  "谁都想不到的open files（文件句柄数）"
 date:   2020-01-13 13:40:36 +0530
 tags: ev::timer pstack open-files
-categories: 事记&ensp;|&ensp;Logging&ensp;Event
+categories: Event|Event
 ---
 看着要过年了， 线上的有几台机器突然出现卡死的现象:scream:，比如原来1分钟的uv::timer，莫名奇妙地变成6分钟，各种诡异事件，最后竟是因为....
 
