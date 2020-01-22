@@ -3,7 +3,7 @@ layout: post
 title:  "了解回调函数"
 date:   2020-01-20 20:40:36 +0530
 tags: callback
-categories: 代码#8195;|#8195;Coding
+categories: [代码 | Coding]
 ---
 让我来试着讲清楚,什么是回调函数:stuck_out_tongue_closed_eyes:.
 
