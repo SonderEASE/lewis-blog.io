@@ -11,7 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8af63b8a-ca0d-4723-b5ad-7164956139f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2020-01-20-what-is-callback.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-20-what-is-callback.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,9 +84,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="664" y="346" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579655692669" />
-    <state x="698" y="266" width="584" height="504" key="find.popup" timestamp="1579657810684">
+    <state x="660" y="241" width="584" height="504" key="find.popup" timestamp="1579660480833">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="698" y="266" width="584" height="504" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579657810684" />
+    <state x="660" y="241" width="584" height="504" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579660480833" />
   </component>
 </project>
