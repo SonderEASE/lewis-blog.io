@@ -10,9 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8af63b8a-ca0d-4723-b5ad-7164956139f2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/_posts/2020-01-08-string-trunked.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-08-string-trunked.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2020-01-14-open-files.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-14-open-files.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2020-01-20-what-is-callback.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-20-what-is-callback.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +72,7 @@
       <workItem from="1579599571691" duration="251000" />
       <workItem from="1579599877848" duration="1367000" />
       <workItem from="1579655686943" duration="1119000" />
+      <workItem from="1579662961803" duration="43000" />
     </task>
     <servers />
   </component>
