@@ -38,8 +38,11 @@ categories: [代码 | Coding]
 
 # 工具
 
-工欲善其事，必先利其器. 大佬们已经总结好了性能工具图, 在这里贴一下. 详细见 http://www.brendangregg.com/linuxperf.html?spm=a2c6h.12873639.0.0.dea57ee2dxWa83
+工欲善其事，必先利其器. 大佬们已经总结好了性能工具图(Linux Performance Tools-full), 在这里贴一下. 详细见 *http://www.brendangregg.com/linuxperf.html?spm=a2c6h.12873639.0.0.dea57ee2dxWa83*
 
+![avatar](https://github.com/SonderEASE/lewis-blog.io/blob/master/pics/linux_observability_tools.png)
+
+看上去密密麻麻的, 但是不要慌~ 往往我们只需要聚焦某一点, 比如这里我们只关注Cpu.
 
 # 优化列表
 
