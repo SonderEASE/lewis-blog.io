@@ -38,11 +38,11 @@ categories: [代码 | Coding]
 
 # 工具
 
-工欲善其事，必先利其器. 大佬们已经总结好了性能工具图(Linux Performance Tools-full), 在这里贴一下. 详细见 *http://www.brendangregg.com/linuxperf.html?spm=a2c6h.12873639.0.0.dea57ee2dxWa83*
+工欲善其事，必先利其器. 大佬们已经总结好了性能工具图(Linux Performance Tools-full), 在这里贴一下. [更多详细内容](http://www.brendangregg.com/linuxperf.html?spm=a2c6h.12873639.0.0.dea57ee2dxWa83)
 
-![avatar](https://github.com/SonderEASE/lewis-blog.io/blob/master/pics/linux_observability_tools.png)
+![avatar](https://github.com/SonderEASE/lewis-blog.io/blob/master/pics/linux_observability_tools.png?raw=true)
 
-看上去密密麻麻的, 但是不要慌~ 往往我们只需要聚焦某一点, 比如这里我们只关注Cpu.
+看上去密密麻麻的, 但是不要慌~ 往往我们只需要聚焦某一点, 比如这里我们只关注Cpu. 那我们重点就是掌握perf以及借助perf生成的火焰图就好了~ 工具我觉得不需要多说什么,只要能用起来,越简单的教程越有价值.比如这个:point_right:[无脑生成火焰图](https://www.cnblogs.com/happyliu/p/6142929.html)
 
 # 优化列表
 
