@@ -38,6 +38,9 @@ categories: [代码 | Coding]
 
 # 工具
 
+工欲善其事，必先利其器. 大佬们已经总结好了性能工具图, 在这里贴一下. 详细见 http://www.brendangregg.com/linuxperf.html?spm=a2c6h.12873639.0.0.dea57ee2dxWa83
+
+
 # 优化列表
 
 # 写在最后
