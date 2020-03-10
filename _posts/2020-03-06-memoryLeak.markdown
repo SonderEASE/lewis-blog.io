@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "linux内存泄露"
-date:   2020-02-20 20:40:36 +0530
+title:  "内存泄露-TooList"
+date:   2020-03-10 16:40:36 +0530
 tags: cppcheck valgrind
 categories: [代码 | Coding]
 ---
-掌握工具,快速定位,你值得拥有~ :speak_no_evil:
+掌握工具,快速定位,你值得拥有~ :star2:
 
 # ToolList
 
