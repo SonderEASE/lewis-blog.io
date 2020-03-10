@@ -46,8 +46,10 @@ categories: [代码 | Coding]
 
 &#8195;&#8195;还有些常用指令:
 + top
-+ pstack
-+ 
++ pstack pid
++ gstack pid
++ ps -Lp pid cu
++ ...
 
 # 优化列表
 + 2/8原则
