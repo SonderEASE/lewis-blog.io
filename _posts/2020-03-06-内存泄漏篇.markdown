@@ -1,0 +1,25 @@
+---
+layout: post
+title:  "linux内存泄露"
+date:   2020-02-20 20:40:36 +0530
+tags: cppcheck valgrind
+categories: [代码 | Coding]
+---
+掌握工具,快速定位,你值得拥有~ :speak_no_evil:
+
+# ToolList
+
+
++ cppcheck
+
+[足够简单的使用教程](https://blog.csdn.net/fengbingchun/article/details/77803920)
+
+
+[你可能遇到的问题](https://blog.csdn.net/mylifeyouwill/article/details/102573549)
+
++ 
+
+
+
+# 写在最后
+enjoy :cake:
