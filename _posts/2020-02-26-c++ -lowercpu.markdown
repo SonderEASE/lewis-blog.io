@@ -46,6 +46,7 @@ categories: [代码 | Coding]
 
 &#8195;&#8195;还有些常用指令:
 + top
++ [htop](https://blog.csdn.net/zxgravity/article/details/82224069)
 + pstack pid
 + gstack pid
 + ps -Lp pid cu
