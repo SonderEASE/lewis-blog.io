@@ -52,7 +52,7 @@ categories: [代码 | Coding]
 + ...
 
 &#8195;&#8195;再分享一组计算程序cpu消耗的指令:
-+ top -p pid -b -d 1 | grep process_name >> cpu_record.log  
++ top -p pid -b -d 1(1秒抓一次) | grep process_name >> cpu_record.log  
 + 最大值:cat tcpu_record.log |awk 'BEGIN {max = 0} {if ($9+0 > max+0) max=$9} END {print "Max=", max}' 
 + 最小值:cat cpu_record.log | awk 'BEGIN {min = 65536} {if ($9+0 < min+0) min=$9} END {print "Min=", min}' 
 + 平均值:cat tcpu_record.log | awk '{sum+=$9} END {print "Avg= ", sum/NR}'
