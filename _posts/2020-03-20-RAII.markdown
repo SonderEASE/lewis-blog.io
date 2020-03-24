@@ -24,9 +24,9 @@ categories: [笔记 | Notes]
 
 |生命周期 |以面向**过程**程序为例|
 |-|-|
-| 获取资源 | 打开文件 file = fopen(filename, open_mode)|
-| 使用资源 | 读写文件 fread/fwrite(buffer, size, count, file)|
-| 释放资源 | 关闭文件 fclose(file)|
+|&#8195;获取资源&#8195;|&#8195;打开文件 file = fopen(filename, open_mode)&#8195;|
+|&#8195;使用资源&#8195;|&#8195;读写文件 fread/fwrite(buffer, size, count, file)&#8195;|
+|&#8195;释放资源&#8195;|&#8195;关闭文件 fclose(file)&#8195;|
 
 + 对于面向过程语言(C),对资源的操作往往通过函数调用的方式, 如上表所示, 通过调用fopen()获取文件资源,拿到资源的句柄(handled)
 + 再将句柄以参数的形式传入到fread/fwrite中,进行读写(使用文件资源).
@@ -38,9 +38,9 @@ categories: [笔记 | Notes]
 
 |生命周期 |以面向**对象**程序为例|
 | --- | --- |
-获取资源 | 打开文件 fstream = file("/usr/eg.txt");|
-使用资源 | 读写文件 file.read(..)/file.write(..)|
-释放资源 | 关闭文件 析构file对象->flie.close()|
+|&#8195;获取资源&#8195;|&#8195;打开文件 fstream = file("/usr/eg.txt")&#8195;|
+|&#8195;使用资源&#8195;|&#8195;读写文件 file.read(..)/file.write(..)&#8195;|
+|&#8195;释放资源&#8195|&#8195;关闭文件 析构file对象->flie.close()&#8195;|
 
 ## <font face="微软雅黑" >2.1 拥有资源对象的销毁</font>
 
@@ -89,6 +89,7 @@ C++出于对性能的追求, 不支持自动销毁机制. 但是为了解决C语
 + 如果被引用对象无效，不能读取或修改这个弱引用对象
 
 ## <font face="微软雅黑" >3.4 C++怎么做的?</font>
+
 |实现方式|映射方式|可拷贝|修改同步|失效同步|
 |-|-|-|-|-|
 |unique_ptr | 一对一强引用 | no | yes | - |
