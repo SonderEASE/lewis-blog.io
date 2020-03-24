@@ -20,7 +20,7 @@ categories: [代码 | Coding]
 的过程
 
 这段理解是基于wikipedia对于callback的解释, 涉及到同步与异步的概念稍后会给大家做解释.
-> In computer programming, a callback, also known as a "call-after" function, is any executable code that is passed as an argument to other code that is expected to call back (execute) the argument at a given time. This execution may be immediate as in a synchronous callback, or it might happen at a later time as in an asynchronous callback. Programming languages support callbacks in different ways, often implementing them with subroutines, lambda expressions, blocks, or function pointers.
+> *In computer programming, a callback, also known as a "call-after" function, is any executable code that is passed as an argument to other code that is expected to call back (execute) the argument at a given time. This execution may be immediate as in a synchronous callback, or it might happen at a later time as in an asynchronous callback. Programming languages support callbacks in different ways, often implementing them with subroutines, lambda expressions, blocks, or function pointers.*
 
 来看伪代码理解下这个过程~
 ```c++
