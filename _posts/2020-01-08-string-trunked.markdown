@@ -5,7 +5,7 @@ date:   2020-01-06 22:03:36 +0530
 tags:   std::string char[]
 categories: [代码 | Coding]
 ---
-直接使用赋值号将字符数组赋给了string, 而没有使用string.assign(char_array,sizeof(char_array)),以及 string(char_array, sizeof(char_array)) 引起的一场悲剧:persevere:...... 
+直接使用赋值号将字符数组赋给了string, 而没有使用string.assign(char_array,sizeof(char_array))或者string(char_array, sizeof(char_array)) 引起的一场悲剧:persevere:...... 
 
 ```c++
 
