@@ -76,6 +76,10 @@ categories: [代码 | Coding]
     + 避免使用下标访问的方式创建对象, bad: A[1] = "1";good: A.insert(std::make_pair(1,"1")) 前者会多一次不必要的查询.
     + 善用std::move避免不必要的拷贝.
 
++ **编译选项**
+    O2编译选项比较友好.
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2 -ggdb")
+
 + **避免频繁的new/delete**
     
     局部空间内使用的变量,我们就用普通的局部变量就好,比如command等收发信令,new/delete本身操作就比局部变量的声明和自动析构更耗时,而且大量的new/delete还会造成内存碎片等问题.
