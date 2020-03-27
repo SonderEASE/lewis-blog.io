@@ -7,8 +7,14 @@
 div.highlight {
 	padding: 5px 20px;
 }
-pre.highlight, code {
+code {
 	font-family: 'Consolas', Menlo, monospace;
+	line-height: 1.4em;
+	tab-size: 4;
+}
+
+pre.highlight {
+	font-family: 'Myriad', 'Consolas', Menlo, monospace;
 	line-height: 1.4em;
 	tab-size: 4;
 }
