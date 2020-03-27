@@ -11,7 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8af63b8a-ca0d-4723-b5ad-7164956139f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/_syntax.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/_syntax.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2020-02-26-c++ -lowercpu.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-02-26-c++ -lowercpu.markdown" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +76,7 @@
       <workItem from="1579655686943" duration="1119000" />
       <workItem from="1579662961803" duration="343000" />
       <workItem from="1585043782881" duration="2861000" />
-      <workItem from="1585305685325" duration="101000" />
+      <workItem from="1585305685325" duration="202000" />
     </task>
     <servers />
   </component>

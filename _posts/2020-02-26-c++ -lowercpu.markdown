@@ -77,6 +77,7 @@ categories: [代码 | Coding]
     + 善用std::move避免不必要的拷贝.
 
 + **编译选项**
+    
     O2编译选项比较友好.
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2 -ggdb")
 
