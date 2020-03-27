@@ -683,7 +683,7 @@ main {
   padding-left: 30px; }
 
 .post {
-  font-family: 'Noto Sans SC', 'Merriweather', sans-serif;
+  font-family: 'Myriad', 'Noto Sans SC', 'Merriweather', sans-serif;
   font-weight: 300;
   color: #222;
   line-height: 1.9em; }
@@ -694,7 +694,7 @@ main {
     .post a:hover {
       border-bottom: 0.5px solid #0A59B0; }
   .post h1, .post h2, .post h3, .post h4, .post h5, .post h6 {
-    font-family: 'Noto Sans SC', sans-serif; }
+    font-family: 'Myriad','Noto Sans SC', sans-serif; }
 
 #posts-label {
   border-bottom: 1px solid #eee;
