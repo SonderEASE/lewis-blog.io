@@ -16,7 +16,7 @@ categories: [分享 | Share]
 
 + **JSON for Modern C++**
 
-与EasyHttp是一套的, 上报一般都使用的是Json数据格式, 由德国大佬nlohmann为现代C++编写的json库使用起来异常丝滑~ 如果对性能有着极高的要求可以参考这个[benchmark](https://github.com/miloyip/nativejson-benchmark),作者对各个json库做了[多个维度的对比](https://www.zhihu.com/question/23654513).
+与EasyHttp是配套使用的, 上报一般都使用的是Json数据格式, 由德国大佬nlohmann为现代C++编写的json库使用起来异常丝滑~ 如果对性能有着极高的要求可以参考这个[benchmark](https://github.com/miloyip/nativejson-benchmark), 作者对各个Json库做了[多个维度的对比](https://www.zhihu.com/question/23654513).
 
 [json.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/nlohmann/json.hpp)&#8195;&#8195;[json_fwd.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/nlohmann/json_fwd.hpp)
 
