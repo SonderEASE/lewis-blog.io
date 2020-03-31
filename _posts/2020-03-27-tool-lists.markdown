@@ -10,7 +10,7 @@ categories: [分享 | Share]
 # Tool List
 + **EasyHttp**
 
-刚入职的时候, 基本上入坑每一个项目都是从数据上报开始做起的:joy:(模块相对独立, 便于弄清楚哪些是关键数据,个人觉得从数据上报入手熟悉项目是非常友好的~), EasyHttp对curl进行了简单的封装, 使用起来极其简单~ 
+刚入职的时候, 基本上入坑每一个项目都是从数据上报开始做起的:joy:(模块相对独立, 便于弄清楚哪些是关键数据,个人觉得从数据上报入手熟悉项目是非常友好的), EasyHttp对curl进行了简单的封装, 使用起来极其简单~ 
 
 [EasyHttp.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/EasyHttp/EasyHttp.hpp)&#8195;&#8195;[EasyHttp.cpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/EasyHttp/EasyHttp.cpp)
 
