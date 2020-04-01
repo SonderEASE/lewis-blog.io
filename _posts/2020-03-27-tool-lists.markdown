@@ -22,11 +22,11 @@ categories: [分享 | Share]
 
 [json.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/nlohmann/json.hpp)&#8195;&#8195;[json_fwd.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/nlohmann/json_fwd.hpp)
 
-### **LRU_Cache***
+### **LRU-Cache**
 
 在设计中继转发的时候有用到, 这个模板类实现的LRU-cache看着异常顺眼, 没有一行碍眼的代码, 不需要动脑经就能看得懂:wink:
 
-[LRUCache.hpp]((https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/LRU-Cache/LRUCache.hpp)
+[LRUCache.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/LRU-Cache/LRUCache.hpp)
 
 # The Tail End
 > *Always leave the code better than you found it. —— The Boy Scout Rule*
