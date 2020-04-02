@@ -8,7 +8,11 @@ categories: [分享 | Share]
 :star2::star2::star2::star2::star2:
 
 
-# Tool List 
+# 开源 C++ 库列表
+
+[此页面](https://zh.cppreference.com/mwiki/index.php?title=cpp/links/libs&variant=zh-hans)的目的是构建开源 C++ 库的比较列表，使得人们在需要特定功能的实现时，不必浪费时间在网上（ DuckDuckGo 、谷歌、必应等）搜索。赞:star2:
+
+# 个人工具库
 
 ### **EasyHttp**
 
@@ -27,6 +31,26 @@ categories: [分享 | Share]
 在设计中继转发的时候有用到, 这个模板类实现的LRU-cache看着异常顺眼, 没有一行碍眼的代码, 不需要动脑经就能看得懂:wink:
 
 [LRUCache.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/LRU-Cache/LRUCache.hpp)
+
+### **CryptoUtils**
+
+CryptoUtils是加密的好伴侣, 将md5,sha0等转换为16进制的格式. 简单实用~
+
+[CryptoUtils.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/CryptoUtils/CryptoUtils.hpp)&#8195;&#8195;[CryptoUtils.cpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/CryptoUtils/CryptoUtils.cpp)
+
+# 个人算法库
+
+### **SHA**
+
+安全散列算法[SHA](https://zh.wikipedia.org/wiki/SHA%E5%AE%B6%E6%97%8F), SHA0用的比较多, 其他系列可以通过[openssl]库(https://www.openssl.org/)中的sha.h获取~
+
+[SHA0.h](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/algorithm/SHA0.h)&#8195;&#8195;[SHA0.c](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/algorithm/SHA0.c)
+
+### **MD5**
+
+信息摘要算法[MD5](https://zh.wikipedia.org/wiki/MD5), 同样使用的是[openssl库](https://www.openssl.org/)中的md5.h中的算法. 终端上敲 **md5sum + filename/string** 可以查看文件或者字符串的md5值.
+
+
 
 # The Tail End
 > *Always leave the code better than you found it. —— The Boy Scout Rule*
