@@ -45,7 +45,7 @@ CryptoUtils是加密的好伴侣, 将md5,sha0等转换为16进制的格式. 简�
 
 安全散列算法[SHA](https://zh.wikipedia.org/wiki/SHA%E5%AE%B6%E6%97%8F), SHA0用的比较多, 其他系列可以通过[openssl]库(https://www.openssl.org/)中的sha.h获取~
 
-[SHA0.h](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/algorithm/SHA0.h)&#8195;&#8195;[SHA0.c](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/algorithm/SHA0.c)
+[SHA0.h](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/algorithm/SHA0/SHA0.h)&#8195;&#8195;[SHA0.c](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/algorithm/SHA0/SHA0.c)
 
 ### **MD5**
 
