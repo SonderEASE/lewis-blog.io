@@ -39,6 +39,41 @@ CryptoUtils是加密的好伴侣, 将md5,sha0等转换为16进制的格式. 简�
 
 [CryptoUtils.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/CryptoUtils/CryptoUtils.hpp)&#8195;&#8195;[CryptoUtils.cpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/CryptoUtils/CryptoUtils.cpp)
 
+### **libuv handle封装**
+
+借助模板类对经常用到的uv_async_t, uv_signal_t以及uv_timer_t进行了封装, 结合using使用起来十分干脆利落. 有时间我会把libevent和libev也封装一下的~
+
+```c++
+#include "Event/Timer.hpp"
+
+class Example {
+    using TimerType = uv::Timer<Example>
+
+public:
+    ...
+    void DoSth();
+private:
+    void timer1_cb() {}
+
+private:
+    uv_loop_t* loop_{};
+    TimerType timer1;
+}
+
+void Example::DoSth() {
+    timer.Init(loop_, this, &Example::timer1_cb);
+    timer.Start(10, /*10*/);
+    timer.Stop();
+}
+
+```
+
+[Async.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Event/Async.hpp)&#8195;&#8195;[Signal.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Event/Signal.hpp)&#8195;&#8195;[Timer.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Event/Timer.hpp)
+
+
+
+
+
 # 个人算法库
 
 ### **SHA**
