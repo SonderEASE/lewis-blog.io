@@ -36,8 +36,6 @@ categories: [分享 | Share]
 
 # 个人工具库
 
-[JSON For Modern C++](###JSON for Modern C++)
-
 ### <a name="t1">EasyHttp</a> 
 
 刚入职的时候, 基本上入坑每一个项目都是从数据上报开始做起的:joy:(模块相对独立, 便于弄清楚哪些是关键数据,个人觉得从数据上报入手熟悉项目是非常友好的), EasyHttp对curl进行了简单的封装, 使用起来极其简单~ 
