@@ -11,10 +11,10 @@ categories: [分享 | Share]
 
 # 开源 C++ 库列表
 
-[此页面](https://zh.cppreference.com/mwiki/index.php?title=cpp/links/libs&variant=zh-hans)的目的是构建开源 C++ 库的比较列表，使得人们在需要特定功能的实现时，不必浪费时间在网上（ DuckDuckGo 、谷歌、必应等）搜索。赞:star2:
+[这里](https://zh.cppreference.com/mwiki/index.php?title=cpp/links/libs&variant=zh-hans)已经构建了开源 C++ 库的常用列表，使人们在需要特定功能的实现时，不必再浪费时间搜索。赞:star2:
 
-
-# TOC
+# 我的工具库
+## TOC
 + toc of tools
   - <a href="#t1">EasyHttp</a> 
 
@@ -33,8 +33,6 @@ categories: [分享 | Share]
   - <a href="#a2">MD5</a>
   - <a href="#a3">...</a>
 
-
-# 个人工具库
 
 ### <a name="t1">EasyHttp</a> 
 
