@@ -5,7 +5,7 @@ date:   2020-04-08 20:40:36 +0530
 tags: callback
 categories: [代码 | Coding]
 ---
-让我们稍微深入了解下回调函数的相关知识:stuck_out_tongue_closed_eyes:.
+让我们稍微深入的讨论一下回调函数的相关知识:stuck_out_tongue_closed_eyes:.
 
 
 背景阅读
@@ -51,7 +51,7 @@ std::for_each(std::begin(scores), std::end(scores),
 + **绑定的数据**: total, 局部变量上下文(弱引用, 所有权在闭包外, 但是生命周期比闭包长)
 + **未绑定的数据**: score, 每次迭代传递的值
 
-![avatar](https://github.com/SonderEASE/lewis-blog.io/blob/master/pics/)
+![avatar](https://github.com/SonderEASE/lewis-blog.io/blob/master/pics/callback-sync.png?raw=true)
 
 **异步回调** (async callback) 在构造后存储起来，在 **未来某个时刻（不同的调用栈里）非局部执行**。例如，用户界面为了不阻塞 **UI 线程** 响应用户输入，在 **后台线程** 异步加载背景图片，加载完成后再从 **UI 线程** 显示到界面上：
 
@@ -77,9 +77,10 @@ FetchImageAsync(filename, std::bind([this](const Image& image) {
 + **绑定的数据** bind绑定了View对象的this指针(弱引用)
 + **未绑定的数据** View::LoadImageCallBack 的参数 const Image& image
 
-![avatar](https://github.com/SonderEASE/lewis-blog.io/blob/master/pics/)
+![avatar](https://github.com/SonderEASE/lewis-blog.io/blob/master/pics/callback-async.png?raw=true)
 
-> 注: View::FetchImageAsync是基于Chromium的多线程任务模型(参考:[Keeping the Browser Responsive | Threading and Tasks in Chrome](https://github.com/chromium/chromium/blob/master/docs/threading_and_tasks.md#keeping-the-browser-responsive))
+> 注: 
+View::FetchImageAsync是基于Chromium的多线程任务模型(参考:[Keeping the Browser Responsive \| Threading and Tasks in Chrome](https://github.com/chromium/chromium/blob/master/docs/threading_and_tasks.md#keeping-the-browser-responsive))
 
 ## <a name="t1.1">回调时(弱引用)上下文会不会失效</a>
 
@@ -102,8 +103,7 @@ C++核心指南(C++ Core Guidelines)中对此也有讨论:
 处理的方法就是在弱引用失效的时候, 及时的 **取消回调**, 例如 异步加载图片 的代码, 可以给std::bind传递 View 对象的 **弱引用指针**, 也就是std::weak_ptr<View> :
 
 ```c++
-
-FetchImageAsync(filename, std::bind(&View::LoadImageCallback, AsWeakPtr()));
+FetchImageAsync(filename, base::Bind(&View::LoadImageCallback, AsWeakPtr()));
 // 传递weakptr还不是裸指针this
 ```
 
@@ -113,8 +113,8 @@ FetchImageAsync(filename, std::bind(&View::LoadImageCallback, AsWeakPtr()));
 
 > 注: 
 > + AsWeakPtr是Chromium的实现, base::WeakPtr属于侵入式的智能指针, 非 线程安全.
-> + base::Bind 针对 base:WeakPtr扩展了base::IsWeakReceiverM<>检查, 调用前判断弱引用有效性, 可参考: [Binding A Class Method With Weak Pointers | Callback<> and Bind()](https://github.com/chromium/chromium/blob/master/docs/callback.md#binding-a-class-method-with-weak-pointers)
-> + 也可以基于std::weak_ptr表示弱引用所有权, 有一些需要注意的地方可以学习这篇文章: [弱回调 |《当析构函数遇到多线程 —— C++ 中线程安全的对象回调》陈硕](https://github.com/downloads/chenshuo/documents/dtor_meets_mt.pdf)
+> + base::Bind 针对 base:WeakPtr扩展了base::IsWeakReceiverM<>检查, 调用前判断弱引用有效性, 可参考: [Binding A Class Method With Weak Pointers \| Callback<> and Bind()](https://github.com/chromium/chromium/blob/master/docs/callback.md#binding-a-class-method-with-weak-pointers)
+> + 也可以基于std::weak_ptr表示弱引用所有权, 有一些需要注意的地方可以学习这篇文章: [弱回调 \|《当析构函数遇到多线程 —— C++ 中线程安全的对象回调》陈硕](https://github.com/downloads/chenshuo/documents/dtor_meets_mt.pdf)
 
 ...
 
