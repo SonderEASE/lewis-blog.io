@@ -15,13 +15,13 @@ categories: [代码 | Coding]
 + 如果对对象的所有权和生命周期的管理还有些陌生, 欢迎阅读:point_right:[资源管理小记](https://sonderease.github.io/lewis-blog.io/%E7%AC%94%E8%AE%B0%20%7C%20notes/2020/03/20/RAII.html)
 
 从概念上看, 回调是一个调用函数的过程, 这个过程中有两个角色, 计算和数据, 其中计算就是函数, 而数据有两类:
-+ **绑定** 的数据, 即回调的 **上下文**
++ **绑定** 的数据, 即回调的 **上下文** (*context*)
 + **未绑定** 的数据, 即执行计算(回调函数)时 **传入的参数**
 
 捕获了上下文(绑定的数据)的回调函数就成为了 [闭包](https://zh.wikipedia.org/zh-cn/%E9%97%AD%E5%8C%85_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)#%E9%97%AD%E5%8C%85%E7%9A%84%E7%94%A8%E9%80%94), 即闭包 = 函数 + 上下文.
 
 在面向对象语言中, 对象是一等公民, 而函数不是, 所以在实现上:
-+ **闭包** 一般通过对象实现(例如 std::function)
++ **闭包**(*closure*) 一般通过对象实现(例如 std::function)
 + **上下文** 一般作为 **闭包对象** 的数据成员存在.
 
 从 **对象所有权的角度** 来看, **上下文**又进一步分为:
@@ -38,6 +38,8 @@ categories: [代码 | Coding]
     + 为什么区分一次还是多次?
     + 何时销毁(强引用)上下文?
 
+&nbsp;
+&nbsp;
 # <a name="t1">回调是同步的还是异步的</a> 
 **同步回调** (sync callback) 在 **构造闭包** 的 **调用栈** (call stack) 里 **局部执行**。例如，累加一组得分（使用 lambda 表达式捕获上下文 total）
 
@@ -82,6 +84,7 @@ FetchImageAsync(filename, std::bind([this](const Image& image) {
 > 注: 
 View::FetchImageAsync是基于Chromium的多线程任务模型(参考:[Keeping the Browser Responsive \| Threading and Tasks in Chrome](https://github.com/chromium/chromium/blob/master/docs/threading_and_tasks.md#keeping-the-browser-responsive))
 
+&nbsp;
 ## <a name="t1.1">回调时(弱引用)上下文会不会失效</a>
 
 前面已经说了, 闭包并不拥有 **弱引用上下文**, 所以上下文可能失效.
@@ -98,6 +101,7 @@ C++核心指南(C++ Core Guidelines)中对此也有讨论:
 + [F.52: Prefer capturing by reference in lambdas that will be used locally, including passed to algorithms](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rf-reference-capture) 
 + [F.53: Avoid capturing by reference in lambdas that will be used non-locally, including returned, stored on the heap, or passed to another thread](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rf-value-capture)
 
+&nbsp;
 ## <a name="t1.2">如何处理失效的(弱引用)上下文</a>
 
 处理的方法就是在弱引用失效的时候, 及时的 **取消回调**, 例如 异步加载图片 的代码, 可以给std::bind传递 View 对象的 **弱引用指针**, 也就是std::weak_ptr<View> :
