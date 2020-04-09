@@ -85,6 +85,11 @@ void Example::DoSth() {
     timer.Stop();
 }
 
+Example::~Example() {
+    ...
+    timer.Close();
+}
+
 ```
 
 [Async.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Event/Async.hpp)&#8195;&#8195;[Signal.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Event/Signal.hpp)&#8195;&#8195;[Timer.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Event/Timer.hpp)
