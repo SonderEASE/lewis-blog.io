@@ -108,7 +108,7 @@ Example::~Example() {
 
 &nbsp;
 ### <a name="t7">RWlock</a> 
-由 [std::condition_variable(信号量)](https://en.cppreference.com/w/cpp/thread/condition_variable) 和 [std::unique_lock<std::mutex>](https://en.cppreference.com/w/cpp/thread/unique_lock) 结合实现的读写锁(写优先, 避免**写者饥饿**), 并进行了两层封装, 可以选择自己控制 lock 和 unlock 的时机, 也可以通过外层的封装 WriteGuard 或者 ReadGuard 当作 **scoped_lock** 使用. 
+由 [std::condition_variable(信号量)](https://en.cppreference.com/w/cpp/thread/condition_variable) 和 [std::unique_lock\<std::mutex\>](https://en.cppreference.com/w/cpp/thread/unique_lock) 结合实现的读写锁(写优先, 避免**写者饥饿**), 并进行了两层封装, 可以选择自己控制 lock 和 unlock 的时机, 也可以通过外层的封装 WriteGuard 或者 ReadGuard 当作 **scoped_lock** 使用. 
 
 [RWLock.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/RWLock/RWLock.cpp)
 
