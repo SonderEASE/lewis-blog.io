@@ -187,7 +187,7 @@ void DoSendRepeating(const Buffer* buffer) {
 
 // client code
 Buffer* buffer = ...;
-event->SetCallback(base::BindRepeating(&DoSendRepeating,                                base::Owned(buffer)));
+event->SetCallback(base::BindRepeating(&DoSendRepeating base::Owned(buffer)));
 ```
 + 构造闭包时, buffer 移动到 base::RepeatingCallback 内.
 + 回调执行时, 每次传递 buffer 指针, DoSendRepeating 只使用 buffer数据, 不销毁弱引用参数.

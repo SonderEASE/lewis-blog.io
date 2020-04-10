@@ -24,9 +24,10 @@ categories: [分享 | Share]
 
   - <a href="#t4">CryptoUtils</a>
 
-  - <a href="#t5">libuv handle封装</a>
+  - <a href="#t5">libuv handle(uv_async_t;uv_signal_t;uv_timer_t)封装</a>
 
-  - <a href="#t6">...</a>
+  - <a href="#t6">Thread-SafeQueue</a>
+  - <a href="#t7">...</a>
 
 + toc of algorithm
   - <a href="#a1">SHA</a>
@@ -34,30 +35,35 @@ categories: [分享 | Share]
   - <a href="#a3">...</a>
 
 
+&nbsp;
 ### <a name="t1">EasyHttp</a> 
 
 刚入职的时候, 基本上入坑每一个项目都是从数据上报开始做起的:joy:(模块相对独立, 便于弄清楚哪些是关键数据,个人觉得从数据上报入手熟悉项目是非常友好的), EasyHttp对curl进行了简单的封装, 使用起来极其简单~ 
 
 [EasyHttp.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/EasyHttp/EasyHttp.hpp)&#8195;&#8195;[EasyHttp.cpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/EasyHttp/EasyHttp.cpp)
 
+&nbsp;
 ### <a name="t2">JSON for Modern C++</a> 
 
 与EasyHttp是配套使用的, 上报一般都使用的是Json数据格式, 由德国大佬nlohmann为现代C++编写的json库使用起来异常丝滑~ 如果对性能有着极高的要求可以参考这个[benchmark](https://github.com/miloyip/nativejson-benchmark), 作者对各个Json库做了[多个维度的对比](https://www.zhihu.com/question/23654513).
 
 [Json.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/nlohmann/json.hpp)&#8195;&#8195;[JsonFwd.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/nlohmann/json_fwd.hpp)
 
+&nbsp;
 ### <a name="t3">LRU-Cache</a> 
 
 在设计中继转发的时候有用到, 这个模板类实现的LRU-cache看着异常顺眼, 没有一行碍眼的代码, 不需要动脑经就能看得懂:wink:
 
 [LRUCache.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/LRU-Cache/LRUCache.hpp)
 
+&nbsp;
 ### <a name="t4">CryptoUtils</a> 
 
 CryptoUtils是加密的好伴侣, 将md5,sha0等转换为16进制的格式. 简单实用~
 
 [CryptoUtils.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/CryptoUtils/CryptoUtils.hpp)&#8195;&#8195;[CryptoUtils.cpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/CryptoUtils/CryptoUtils.cpp)
 
+&nbsp;
 ### <a name="t5">libuv handle封装</a> 
 
 借助模板类对经常用到的uv_async_t, uv_signal_t以及uv_timer_t进行了封装, 结合using使用起来十分干脆利落. 来个例子秀一下~ 有时间我会把libevent和libev也封装一下的.
@@ -91,8 +97,16 @@ Example::~Example() {
 }
 
 ```
-
 [Async.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Event/Async.hpp)&#8195;&#8195;[Signal.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Event/Signal.hpp)&#8195;&#8195;[Timer.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Event/Timer.hpp)
+
+&nbsp;
+### <a name="t6">Thread-SafeQueue</a> 
+
+借助模板实现的线程安全队列, 可以把要处理的事件加入到线程的安全队列中,线程在适当的时候处理线程中的队列, 简单高效的实现异步执行任务的列队~
+
+[SafeQueue.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/SafeQueue/SafeQueue.cpp)
+
+
 
 
 
