@@ -34,7 +34,7 @@ categories: [代码 | Coding]
 1. <a href="#t1">回调是同步的还是异步的?</a>
     + <a href="#t1.1">回调时(弱引用)上下文会不会失效?</a>
     + <a href="#t1.2">如何处理失效的(弱引用)上下文?</a>
-2.<a href="#t2"> 回调执行一次还是多次?</a>
+2. <a href="#t2"> 回调执行一次还是多次?</a>
     + <a href="#t2.1"> 为什么区分一次还是多次?</a>
     + <a href="#t2.2"> 何时销毁(强引用)上下文?</a>
 
@@ -171,8 +171,7 @@ void DoSendOnce(std::unique_ptr<Buffer> buffer) {
 
 // client code
 std::unique_ptr<Buffer> buffer = ...;
-event->SetCallback(base::BindOnce(&DoSendOnce,
-                                  std::move(buffer)));
+event->SetCallback(base::BindOnce(&DoSendOnce,std::move(buffer)));
 ```
 + 构造闭包时, buffer 移动到 base::BindOnce内
 + 回调执行时, buffer 从 base::OnceCallback的 上下文 移动到了 Dosend的函数参数里, 并在回调结束时销毁 (buffer **所有权转移**, DoSendOnce 负责销毁强引用参数).
