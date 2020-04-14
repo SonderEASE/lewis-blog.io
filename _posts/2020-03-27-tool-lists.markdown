@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "C++工具库分享"
-date:   2020-04-03 19:10:18 +0530
+date:   2020-04-03 19:10:00 +0530
 tags: tool-list 
 categories: [分享 | Share]
 ---
@@ -107,13 +107,16 @@ Example::~Example() {
 
 借助模板实现的线程安全队列, 可以把要处理的事件加入到线程的安全队列中,线程在适当的时候处理线程中的队列, 简单高效的实现异步执行任务的列队~
 
-[SafeQueue.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/SafeQueue/SafeQueue.cpp)
+[SafeQueue.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/SafeQueue/SafeQueue.hpp)
 
 &nbsp;
 ### <a name="t7">RWlock</a> 
 由 [std::condition_variable(信号量)](https://en.cppreference.com/w/cpp/thread/condition_variable) 和 [std::unique_lock\<std::mutex\>](https://en.cppreference.com/w/cpp/thread/unique_lock) 结合实现的读写锁(写优先, 避免**写者饥饿**), 并进行了两层封装, 可以选择自己控制 lock 和 unlock 的时机, 也可以通过外层的封装 WriteGuard 或者 ReadGuard 当作 **scoped_lock** 使用. 
 
-[RWLock.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/RWLock/RWLock.cpp)
+RWLock-pthread.hpp 则是针对基于pthread的多线程程序封装的读写锁~
+
+[RWLock.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/RWLock/RWLock.hpp)
+&#8195;&#8195;[RWLock-pthread.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/RWLock/RWLock-pthread.hpp)
 
 
 &nbsp;
