@@ -16,10 +16,10 @@ categories: [代码 | Coding]
 ## 如何安全的使用 delete this
 
 先试着弄清楚, delete this的使用条件.  首先 delete this 在**非析构函数中是合法的**, 然后再看如何安全的使用:
-+ 确保对象是在堆上的 (eg : new)
-+ 确保 delete this 后不会再用该对象调用其他(非静态)成员函数.
-+ 确保 delete this 后不再访问对象的任何部分.
-+ 确保 delete this 后 this 指针不会再被访问.
++ 确保对象是在 **堆** 上的 (eg : new)
++ 确保 delete this 后 **不会再用该对象调用其他(非静态)成员函数**.
++ 确保 delete this 后 **不再访问对象的任何部分**.
++ 确保 delete this 后 **this 指针不会再被访问**.
 
 参考 [C++ Standard Memory Management F&Q](https://isocpp.org/wiki/faq/freestore-mgmt#delete-this)
 
