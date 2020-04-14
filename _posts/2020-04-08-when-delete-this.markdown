@@ -7,11 +7,12 @@ categories: [代码 | Coding]
 ---
 一道"古怪"的面试题, delete this 有没有必要的使用场景 :open_mouth:
 
-&nbsp;
+
 # delete this
 
 看项目代码的时候,发现有用到delete this的地方, 觉得有一点困惑, 顺手查了一下, 就看到了这道["古怪"的面试题](https://www.v2ex.com/t/559047), 完整问题: 有什么要使用 delete this 的 **必要应用场景**, 即: 不使用 delete this 会使代码变得 confused, 异常冗余, 或难以实现功能.
 
+&nbsp;
 ## 如何安全的使用 delete this
 
 先试着弄清楚, delete this的使用条件.  首先 delete this 在**非析构函数中是合法的**, 然后再看如何安全的使用:
@@ -22,6 +23,7 @@ categories: [代码 | Coding]
 
 参考 [C++ Standard Memory Management F&Q](https://isocpp.org/wiki/faq/freestore-mgmt#delete-this)
 
+&nbsp;
 ## 使用 delete this 的场景
 
 首先来说, 我认为不存在必须使用 delete this 的场景, 只能说有的场景使用 delete this 会更好一些.
@@ -77,5 +79,6 @@ void Operation::DoIt() {
 
 +  ...
 
+&nbsp;
 # The Tail End
 以后遇到其他的 delete this 会在这里进行补充~
