@@ -5,7 +5,7 @@ date:   2020-04-13 13:39:00 +0530
 tags: callback
 categories: [代码 | Coding]
 ---
-一道"古怪"的面试题, delete this 有没有必要的使用场景 :question:.
+一道"古怪"的面试题, delete this 有没有必要的使用场景:open_mouth:
 
 
 &nbsp;
