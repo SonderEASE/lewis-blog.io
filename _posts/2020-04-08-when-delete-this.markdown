@@ -2,13 +2,11 @@
 layout: post
 title:  "delete this"
 date:   2020-04-13 13:39:00 +0530
-tags: callback
+tags: delete
 categories: [代码 | Coding]
 ---
 一道"古怪"的面试题, delete this 有没有必要的使用场景 :open_mouth:
 
-
-&nbsp;
 &nbsp;
 # delete this
 
@@ -30,7 +28,7 @@ categories: [代码 | Coding]
 
 + UI界面关闭
 
-当按下某个按钮关闭窗口时, 满足使用 delete this 的条件, 不需要在关闭窗口后再对窗口的生命周期进行管理.
+当按下某个按钮关闭窗口时, 在触发的回调函数中调用delete this(窗口关闭后不会再对该窗口进行访问等操作), 不再需要使用额外的操作去管理窗口的生命周期.
 
 + 异步事件队列
 
