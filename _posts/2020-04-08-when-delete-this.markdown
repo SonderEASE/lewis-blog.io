@@ -12,7 +12,7 @@ categories: [代码 | Coding]
 &nbsp;
 # delete this
 
-看项目代码的时候,发现有用到delete this的地方, 觉得有一点困惑, 顺手查了一下, 就看了[这道"古怪"的面试题](https://www.v2ex.com/t/559047), 完整的问题: 有什么使用 delete this 的 **必要的应用场景**, 即: 不使用 delete this 会使代码变得 confused, 异常冗余, 或难以实现功能.
+看项目代码的时候,发现有用到delete this的地方, 觉得有一点困惑, 顺手查了一下, 就看到了这道["古怪"的面试题](https://www.v2ex.com/t/559047), 完整问题: 有什么要使用 delete this 的 **必要应用场景**, 即: 不使用 delete this 会使代码变得 confused, 异常冗余, 或难以实现功能.
 
 ## 如何安全的使用 delete this
 
@@ -33,7 +33,9 @@ categories: [代码 | Coding]
 当按下某个按钮关闭窗口时, 满足使用 delete this 的条件, 不需要在关闭窗口后再对窗口的生命周期进行管理.
 
 + 异步事件队列
+
 ```c++
+
 // 伪代码
 // 创建事件的线程
 new op = Operation();
@@ -41,7 +43,8 @@ op->post(dst_thread_id);
 
 // 处理事件的线程
 Operation* op = nullptr;
-// 依次执行队列中的事件 
+
+// 使用 delete this  
 while(op_queue->Get(&op)) {
     op->DoIt(); 
 }
@@ -51,10 +54,28 @@ void Operation::DoIt() {
     if(condition)
         delete this;
     else 
-        op->post(dst_thread_id);
+        this->post(dst_thread_id);
 }
+
+// 不使用 delete this
+while(op_queue->Get(&op)) {
+    op->DoIt();
+    delete op; 
+}
+
+void Operation::DoIt() {
+    // do sth ...
+    if(condition)
+        return;
+    else {
+        new op = Operation();
+        op->post(this->dst_thread_id);
+    } 
+}
+
 ```
-在队列中的事情执行完后, 如果满足一些条件(比如不需要再次回调), 就可以使用 delete this 来对事件进行清理, 如果将事件的生命周期交给外界处理, 比如从队列中取出并执行完DoIt后析构事件, 可能会导致有一些 **需要多次回调** 的事件 **反复创建和析构**, 显得不够灵活. 
+
+在队列中的事件执行动作之后, 如果满足一些条件(比如不需要再次回调), 就可以使用 delete this 来对事件进行清理, 如果将事件的生命周期交给外界处理, 比如从队列中取出并执行完DoIt后析构事件, 可能会导致有一些 **需要多次回调** 的事件 **反复创建和析构**, 显得不够灵活. 
 
 +  ...
 
