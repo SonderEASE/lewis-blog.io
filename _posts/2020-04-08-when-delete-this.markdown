@@ -35,16 +35,15 @@ categories: [代码 | Coding]
 + 异步事件队列
 
 ```c++
-
-// 伪代码
-// 创建事件的线程
+/* 伪代码 */
+// create event thread 
 new op = Operation();
 op->post(dst_thread_id);
 
-// 处理事件的线程
+// handl event thread
 Operation* op = nullptr;
 
-// 使用 delete this  
+/* 使用 delete this */  
 while(op_queue->Get(&op)) {
     op->DoIt(); 
 }
@@ -57,7 +56,7 @@ void Operation::DoIt() {
         this->post(dst_thread_id);
 }
 
-// 不使用 delete this
+/* 不使用 delete this */  
 while(op_queue->Get(&op)) {
     op->DoIt();
     delete op; 
