@@ -30,6 +30,10 @@ categories: [分享 | Share]
 
   - <a href="#t7">RWLock</a>
 
+  - <a href="#t8">Http 接口</a>
+  
+  - <a href="#t9">封装好的 spdlog 日志</a>
+
 + toc of algorithm
   - <a href="#a1">SHA</a>
 
@@ -118,6 +122,21 @@ RWLock-pthread.hpp 则是针对基于pthread的多线程程序封装的读写锁
 [RWLock.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/RWLock/RWLock.hpp)
 &#8195;&#8195;[RWLock-pthread.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/RWLock/RWLock-pthread.hpp)
 
+&nbsp;
+### <a name="t8">Http 接口</a>
+
+在实际业务中, 经常会有增加数据接口的需求, 比如在线读取, 删除, 增添数据等. Monitor 对这一需求进行了完美的封装, 在需要增添新的接口时, 只需要通过RegisterRouter接口结合lambda表达式完成注册即可. 使用起来非常简单, 而且十分独立. 
+
+注: 我这里的实现是基于 libuv 以及自己的Tcp封装库, 使用时记得配套修改, 改动起来比较简单~ 
+
+[MonitorManager.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Monitor/MonitorManager.hpp)&#8195;&#8195;[MonitorManager.cpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Monitor/MonitorManager.cpp)&#8195;&#8195;[MonitorSession.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Monitor/MonitorSession.hpp)&#8195;&#8195;[MonitorSession.cpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Monitor/MonitorSession.cpp)&#8195;&#8195;[MonitorUtils.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/Monitor/MonitorUtils.hpp)
+
+&nbsp;
+### <a name="t9">封装好的 spdlog 日志</a>
+
+spdlog **非常的快**, **性能** 是它的主要目标, 同时他也支持异步模式(可选)、自定义格式、条件日志、多线程/单线程日志、日志级别在线修改、可每日生成日志文件等等功能. 这里对他做一个简单的封装, 支持通过[Http接口]对日志级别进行在线修改, 未来如果业务有更多的需求也会更新更多的接口.
+
+[Logger.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/spdlog/Logger.hpp)&#8195;&#8195;[Logger.cpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/spdlog/Logger.cpp)
 
 &nbsp;
 # 个人算法库
