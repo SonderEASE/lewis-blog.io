@@ -134,7 +134,7 @@ RWLock-pthread.hpp 则是针对基于pthread的多线程程序封装的读写锁
 &nbsp;
 ### <a name="t9">封装好的 spdlog 日志</a>
 
-spdlog **非常的快**, **性能** 是它的主要目标, 同时他也支持异步模式(可选)、自定义格式、条件日志、多线程/单线程日志、日志级别在线修改、可每日生成日志文件等等功能. 这里对他做一个简单的封装, 支持通过[Http接口]对日志级别进行在线修改, 未来如果业务有更多的需求也会更新更多的接口.
+spdlog **非常的快**, **性能** 是它的主要目标, 同时他也支持异步模式(可选)、自定义格式、条件日志、多线程/单线程日志、日志级别在线修改、可每日生成日志文件等等功能. 这里对他做一个简单的封装, 支持通过  <a href="#t8">Http 接口</a> 对日志级别进行在线修改, 未来如果业务有更多的需求也会更新更多的接口.
 
 [Logger.hpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/spdlog/Logger.hpp)&#8195;&#8195;[Logger.cpp](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/tool-list/spdlog/Logger.cpp)
 
