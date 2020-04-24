@@ -46,8 +46,10 @@ categories: [代码 | Coding]
 &#8195;&#8195;看上去密密麻麻的, 但是不要慌~ 往往我们只需要聚焦某一点, 比如这里我们只关注Cpu. 那我们重点就是掌握perf以及借助perf生成的火焰图就好了~ 工具我觉得不需要多说什么,只要能用起来,越简单的教程越有价值.比如这个:point_right:[无脑生成火焰图](https://www.cnblogs.com/happyliu/p/6142929.html)
 
 &#8195;&#8195;还有些常用指令:
-+ top htop
++ top
 + [htop](https://blog.csdn.net/zxgravity/article/details/82224069)
++ iostat -c 1(间隔) 10(次数) 查看cpu整体状态
++ iostat -d -x(设备使用率,响应时间) -k(tcp吞吐量) 1(间隔) 10(次数)
 + pstack pid
 + gstack pid
 + ps -Lp pid cu
