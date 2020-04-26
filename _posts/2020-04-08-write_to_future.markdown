@@ -2,6 +2,7 @@
 layout: post
 title:  "选择"
 date:   2020-04-20 08:39:00 +0530
+tags: life
 categories: [生活 | Life]
 ---
 写给两年后的自己 :flags:
