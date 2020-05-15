@@ -88,12 +88,7 @@ struct hour_filename_calculator
         {
             auto now = log_clock::now();
             tm date = now_tm(now);
-            auto rotation_time = log_clock::from_time_t(std::mktime(&date));
-            if (rotation_time > now)
-            {
-                return rotation_time;
-            }
-            return {rotation_time + std::chrono::hours(1)};
+            return now + std::chrono::seconds(60-date.tm_sec) + std::chrono::minutes(59-date.tm_min);
         }
 
         filename_t base_filename_;
