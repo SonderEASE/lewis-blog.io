@@ -91,7 +91,8 @@ web_monitor.AddPage("/monitor/demo", "Demo", func(page *web_monitor.Page, params
 	})
 ```
 
-![avatar](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/pics/web-monitor-home-page.png)
+
+![avatar](https://github.com/SonderEASE/lewis-blog.io/blob/master/pics/web-monitor-demo.png?raw=true)
 
 
 除了增加表, 空白区域以外, 还有很多丰富的元素, 比如曲线, 自定义曲线, 脚本, MapTable等, 应有尽有.
