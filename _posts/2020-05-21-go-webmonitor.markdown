@@ -2,7 +2,7 @@
 layout: post
 title:  "Go-数据监控平台"
 date:   2020-05-26 22:03:36 +0530
-tags:   Go WebMonitor gRpc
+tags:   Go WebMonitor
 categories: [代码 | Coding]
 ---
 最近刚刚接手了直播调度, 其中有一个webmonitor包十分吸引我, 它可以十分快捷的实现一个实时数据展示界面, 再结合gRpc,与其他模块进行数据的采集与订阅, 一个实用的数据监控平台就建立起来了:stuck_out_tongue_winking_eye:
@@ -34,7 +34,7 @@ Init 除了可以传入包里已经写好的接口以外完全可以自己再加
 
 通过这样一个接口,**HomePage**就建立起来了, HomePage的样子,展现什么数据, 也可以在 **handleHomePage(w http.ResponseWriter, r \*http.Request)** 里进行调整. 
 
-![avatar](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/pics/web-monitor-home-page.png)
+![avatar](https://github.com/SonderEASE/lewis-blog.io/blob/master/pics/web-monitor-home-page.png?raw=true)
 
 # 丰富页面
 
