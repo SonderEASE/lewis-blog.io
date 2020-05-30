@@ -9,7 +9,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8af63b8a-ca0d-4723-b5ad-7164956139f2" name="Default Changelist" comment="" />
+    <list default="true" id="8af63b8a-ca0d-4723-b5ad-7164956139f2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/_posts/2020-05-21-go-webmonitor.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-05-21-go-webmonitor.markdown" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +44,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\google\lewis-blog.io\wait_to_post" />
+    </key>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -64,6 +71,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="664" y="346" key="com.intellij.ide.util.TipDialog" timestamp="1579655692669">
