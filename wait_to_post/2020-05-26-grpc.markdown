@@ -1,11 +1,11 @@
 ---
 layout: post
 title:  "gRPC"
-date:   2020-05-26 22:00:00 +0530
+date:   2020-05-29 22:00:00 +0530
 tags:   gRPC web-monitor go
 categories: [代码 | Coding]
 ---
-先通过一个小的demo快速地熟悉使用gRPC的方式, 然后我们结合之前的webmonitor实现微服务之间的数据发布与订阅, 最后让我们感受下使用gRPC在多种语言服务之间的高效交互. :star2:
+我们先通过一个简单的例子快速地熟悉使用gRPC的方式, 然后我们结合之前的webmonitor实现微服务之间的数据发布与订阅, 最后让我们感受下使用gRPC在多种语言服务之间的高效交互. :star2:
 
 &nbsp;
 # why gRPC ?
@@ -26,4 +26,79 @@ RPC 是 **远程函数调用**，因此每次调用的函数参数和返回值�
 &nbsp;
 # 如何使用 gRPC ?
 
-我们假设有一个服务上存着大量的通讯信息, 客户端可以向服务端
+我们假设有一个服务上存着大量客户的通讯信息, 客户端可以向服务端注册/更新自己的通讯信息， 也可以查询其他客户的通讯方式。
+
+## Get Start!
+
+### <a name="s1">Step1: 定义gRPC</a> 
+
++ 使用 [protocol-buffers](https://developers.google.com/protocol-buffers) 对服务进行定义
+
+```go
+
+syntax = "proto3";      // 指定协议版本
+
+package address_book;  
+
+service AddressBookService {
+  rpc GetAddressByName(GetAddressByNameReq) returns (GetAddressByNameRep) {}
+  rpc RegisterAndUpdate(RegisterAndUpdateReq)  returns (RegisterAndUpdateRep) {}
+}
+
+message  GetAddressByNameReq {
+  string name = 1;
+}
+
+message GetAddressByNameRep  {
+  PersonalInfo personal_info = 1;
+}
+
+message RegisterAndUpdateRep {
+  bool result = 1;
+}
+
+message RegisterAndUpdateReq {
+  PersonalInfo personal_info = 1;
+}
+
+message PersonalInfo {
+  string name = 1;
+  string phone_number =2;
+  string address = 3;
+}
+
+```
+
++ 定义服务接口时我们尽量使用像 xxxReq(Request), xxxRep(Reply) 这样的通用格式来命名参数， 这样当接口参数内容发生变化时client 和 server 端的代码就不需要进行修改。
+
+### <a name="s2">Step 2: 生成gRPC代码</a> 
+
++ 一些准备工作
+
+1. 安装 gRPC 插件和 protoc 
+``` linux
+$ export GO111MODULE=on  # Enable module mode
+$ go get github.com/golang/protobuf/protoc-gen-go@v1.3
+```
+2. 更新环境变量以便让protoc可以找到插件位置
+``` linux
+$ export PATH="$PATH:$(go env GOPATH)/bin"
+```
+
++ 使用 protocol buffer 编译器 protoc 来生成创建应用所需的特定客户端和服务端的代码.
+```linux
+protoc --go_out=plugins=grpc:. address_book.proto
+// protoc -h to see more options
+```
+congratulations~ 我们的grpc代码就这样生成了， 生成的代码同时包括客户端的存根和服务端要实现的抽象接口，均包含 <a href="#s1">Addres
+sBookService</a> 所定义的方法。
+
+### <a name="s3">Step 3: 实现客户端和服务端的代码</a> 
+
++ client.go 
+
+``` go
+
+
+
+```
