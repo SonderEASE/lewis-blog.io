@@ -1,0 +1,309 @@
+---
+layout: post
+title:  "gRPC"
+date:   2020-05-29 22:00:00 +0530
+tags:   gRPC web-monitor go
+categories: [代码 | Coding]
+---
+我们先通过一个简单的例子快速地熟悉使用gRPC的方式, 然后我们结合之前的webmonitor实现微服务之间的数据发布与订阅, 最后让我们感受下使用gRPC在多种语言服务之间的高效交互. :star2:
+
+&nbsp;
+## <a name="t1">Why gRPC?</a> 
+
+gRPC 是一个由Google发起的高性能、通用的开源RPC框架, 基于 [**HTTP/2**](https://zh.wikipedia.org/wiki/HTTP/2) 协议传输, 使用 [**Protocol Buffers**](https://zh.wikipedia.org/wiki/Protocol_Buffers) 作为接口描述语言. 常用于 微服务框架下, 多种语言服务之间的高效交互.  
+
+优势:
++ 强大的IDL特性 RPC使用ProtoBuf来定义服务, 性能出众.
++ proto文件生成目标代码，简单易用.
++ 支持多语言.
++ 支持 HTTP/2, 同时也为长时通信提供了基础, 支持流式数据传输(双向支持).
+
+
+### **流**
+
+RPC 是 **远程函数调用**，因此每次调用的函数参数和返回值不能太大，否则将严重影响每次调用的响应时间。因此传统的RPC方法调用对于上传和下载较大数据量场景并不适合。同时传统RPC模式也不适用于对时间不确定的订阅和发布模式。为此，gRPC框架针对服务器端和客户端分别提供了 **流特性**。
+
+&nbsp;
+## <a name="t2">如何使用 gRPC ?</a> 
+
+我们假设有一个服务上存着大量客户的通讯信息, 客户端可以向服务端注册/更新自己的通讯信息， 也可以查询其他客户的通讯方式。
+
+## Get Start!
+
+### <a name="s1">Step1: 定义gRPC</a> 
+
++ 使用 [protocol-buffers](https://developers.google.com/protocol-buffers) 对服务进行定义
+
+```go
+
+syntax = "proto3";      // 指定协议版本
+
+package address_book;  
+
+service AddressBookService {
+  rpc GetAddressByName(GetAddressByNameReq) returns (GetAddressByNameRep) {}
+  rpc RegisterAndUpdate(RegisterAndUpdateReq)  returns (RegisterAndUpdateRep) {}
+}
+
+message  GetAddressByNameReq {
+  string name = 1;
+}
+
+message GetAddressByNameRep  {
+  PersonalInfo personal_info = 1;
+}
+
+message RegisterAndUpdateRep {
+  bool result = 1;
+}
+
+message RegisterAndUpdateReq {
+  PersonalInfo personal_info = 1;
+}
+
+message PersonalInfo {
+  string name = 1;
+  string phone_number =2;
+  string address = 3;
+}
+
+```
+
++ 定义服务接口时我们尽量使用像 xxxReq(Request), xxxRep(Reply) 这样的通用格式来命名参数， 这样当接口参数内容发生变化时client 和 server 端的代码就不需要进行修改。
+
+### <a name="s2">Step 2: 生成gRPC代码</a> 
+
++ 一些准备工作
+
+1. 安装 gRPC 插件和 protoc 
+``` linux
+$ export GO111MODULE=on  # Enable module mode
+$ go get github.com/golang/protobuf/protoc-gen-go@v1.3
+```
+2. 更新环境变量以便让protoc可以找到插件位置
+``` linux
+$ export PATH="$PATH:$(go env GOPATH)/bin"
+```
+
++ 使用 protocol buffer 编译器 protoc 来生成创建应用所需的特定客户端和服务端的代码.
+```linux
+protoc --go_out=plugins=grpc:. address_book.proto
+// protoc -h to see more options
+```
+congratulations~ 我们的grpc代码就这样生成了， 生成的代码同时包括客户端的存根和服务端要实现的抽象接口，均包含 <a href="#s1">Addres
+sBookService</a> 所定义的方法。
+
+### <a name="s3">Step 3: 实现客户端和服务端的代码</a> 
+
++ client.go 
+
+``` go
+
+package main
+
+import (
+	"context"
+	"flag"
+	"google.golang.org/grpc"
+	pb "google.golang.org/grpc/examples/address_book/protos"
+	"log"
+	"time"
+)
+
+type ClientInfo struct {
+	name string
+	phone string
+	address string
+}
+
+
+var (
+	serverAddr  = flag.String("server-address", "localhost:8888", "服务器的地址")
+	clientName  = flag.String("name", "刘易斯", "姓名")
+	clientPhone = flag.String("tel", "12345678910", "电话")
+	clientAddress = flag.String("address", "宇宙中心", "地址")
+)
+
+var (
+	clientInfo *ClientInfo
+)
+
+// Register
+func Register(client pb.AddressBookServiceClient, info ClientInfo) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	register_reply, err := client.Register(ctx, &pb.RegisterReq{
+		PersonalInfo: &pb.PersonalInfo{
+			Name: info.name,
+			PhoneNumber: info.phone,
+			Address: info.address}})
+
+	if err != nil {
+		log.Fatalf("%v.RegisterAndUpdate(_) = _, %v: ", client, err)
+	}
+	log.Println(register_reply)
+
+}
+
+// GetAddressByName
+func GetAddressByName(client pb.AddressBookServiceClient) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	address_book, err := client.GetAddressByName(ctx, &pb.GetAddressByNameReq{Name: "刘易斯"})
+	if err != nil {
+		log.Fatalf("%v.GetAddressBook(_) = _, %v: ", client, err)
+	}
+	log.Println(address_book)
+}
+
+func main () {
+	flag.Parse()
+
+	clientInfo = &ClientInfo{
+		name:    *clientName,
+		phone:   *clientPhone,
+		address: *clientAddress,
+	}
+
+	var opts []grpc.DialOption
+	opts = append(opts, grpc.WithInsecure())
+	opts = append(opts, grpc.WithBlock())
+	conn, err := grpc.Dial(*serverAddr, opts...)
+	if err != nil {
+		log.Fatalf("fail to dial: %v", err)
+	}
+	defer conn.Close()
+
+
+	client := pb.NewAddressBookServiceClient(conn)
+
+	Register(client, *clientInfo)
+
+}
+
+
+```
+
++ server.go 
+```go
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"flag"
+	"fmt"
+	"google.golang.org/grpc"
+	pb "google.golang.org/grpc/examples/address_book/protos"
+	"io/ioutil"
+	"log"
+	"net"
+	"sync"
+	"time"
+)
+
+var (
+	port = flag.Int("port", 8888, "The server port")
+)
+
+
+type addressBookServer struct {
+	sync.RWMutex
+	address_book pb.AddressBook
+}
+
+func (s *addressBookServer) Register (ctx context.Context, request *pb.RegisterReq) (*pb.RegisterRep, error) {
+	for _, client := range s.address_book.People {
+		if client.Name == request.PersonalInfo.Name {
+			return &pb.RegisterRep{Result: "用户名已被使用"}, nil
+		}
+	}
+	s.Lock()
+	defer s.Unlock()
+	s.address_book.People = append(s.address_book.People, request.PersonalInfo)
+	return &pb.RegisterRep{Result: "注册成功"}, nil
+}
+
+func (s *addressBookServer) GetAddressByName(ctx context.Context, request *pb.GetAddressByNameReq) (*pb.GetAddressByNameRep, error) {
+	for _, client := range s.address_book.People {
+		if client.Name == request.Name {
+			return &pb.GetAddressByNameRep{
+				PersonalInfo: &pb.PersonalInfo{Name: client.Name, PhoneNumber: client.PhoneNumber, Address: client.Address},
+				Result: true,
+				}, nil
+		}
+	}
+	return &pb.GetAddressByNameRep{Result: false}, nil
+}
+
+func newServer() *addressBookServer {
+	s := &addressBookServer{address_book: pb.AddressBook{}}
+	s.loadFeatures("")
+	return s
+}
+
+// loadFeatures loads features from a JSON file.
+func (s *addressBookServer) loadFeatures(filePath string) {
+	var data []byte
+	if filePath != "" {
+		var err error
+		data, err = ioutil.ReadFile(filePath)
+		if err != nil {
+			log.Fatalf("Failed to load default features: %v", err)
+		}
+	} else {
+		data = LocalData
+	}
+	if err := json.Unmarshal(data, &s.address_book); err != nil {
+		log.Fatalf("Failed to load default features: %v", err)
+	}
+}
+
+
+func main () {
+	flag.Parse()
+	lis, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", *port))
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
+	grpcServer := grpc.NewServer()
+	address_server := newServer()
+	pb.RegisterAddressBookServiceServer(grpcServer, address_server)
+	_ = grpcServer.Serve(lis)
+
+	go func() {
+		for {
+			address_server.RLock()
+			log.Println("当前注册人数: %d", address_server.address_book)
+			address_server.RUnlock()
+			time.Sleep(20 * time.Second)
+		}
+	}()
+}
+
+
+var LocalData = []byte(`{
+	"people": [{"name": "人工客服", 
+	"phone_number": "8888"
+	"address": "北京市"}, {
+	"name": "售后服务",
+	"phone_number": "6666",
+	"address": "北京市"}
+	]
+}`)
+
+```
+
+### <a name="s3">Step 4: Run it!</a>
+```linux
+go run server.go
+go run client.go
+``` 
+
+&nbsp;
+## <a name="t3">gRPC的流式数据传输</a> 
+
+### <a name="s4">Why Streaming RPC ?</a>
+
+
