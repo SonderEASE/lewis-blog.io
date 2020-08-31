@@ -180,11 +180,11 @@ func main () {
 	Register(client, *clientInfo)
 
 }
-
-
 ```
 
-+ server.go 
+
++ server.go
+
 ```go
 
 package main
@@ -293,9 +293,10 @@ var LocalData = []byte(`{
 	]
 }`)
 
-```
 
+```
 ### <a name="s3">Step 4: Run it!</a>
+
 ```linux
 go run server.go
 go run client.go
