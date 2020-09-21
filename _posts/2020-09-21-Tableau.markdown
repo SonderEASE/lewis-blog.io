@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Tableau-非常吊的数据分析工具"
-date:   2020-05-29 22:00:00 +0530
+date:   2020-09-21 22:00:00 +0530
 tags:   数据分析 tableau
 categories: [分享 | Share]
 ---
