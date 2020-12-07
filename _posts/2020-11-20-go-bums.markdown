@@ -1,0 +1,95 @@
+---
+layout: post
+title:  "recover和锁结合使用的坑"
+date:   2020-11-20 21:00:00 +0530
+tags:   go panic
+categories: [代码 | Coding]
+---
+使用recover的时候不够谨慎导致的惨案.:pencil:
+
+&nbsp;
+## <a name="t1"> 事故现场 </a> 
+
+对于可用性要求比较高的程序, 为防止程序异常崩溃, 或者需要在崩溃前保留一些有用的信息通常都会用到recover. 比如类似下面这样的代码.
+
+```go
+
+func (as *ApiServer) someInterfaceFunc(req *http.Request) {
+	defer func() {
+		if rec := recover(); rec != nil {
+			HandlePanic(rec)
+		}
+	}()
+	...
+}
+
+```
+
+recover的目的就是为了让程序在崩溃后不会宕机, **执行完对应的defer**后, 从 **宕机点** 退出到**当前函数后** 继续执行. 有一个关键点, 是从gg的地方所在的函数之后去继续运行. 如果小看了这一点就会发生可怕的事情. 比如:
+
+
+```go
+
+type SthUseFul struct {
+    ...
+}
+
+func (s *SthUseFul) SuperMessFunc() {
+    ...
+}
+
+var sth *SthUseFul
+var sthLock sync.RWMutex
+
+
+func (as *ApiServer) someInterfaceFunc(req *http.Request) {
+	defer func() {
+		if rec := recover(); rec != nil {
+			HandlePanic(rec)
+		}
+	}()
+    sthLock.Lock()
+    sth.SuperMessFunc()  //如果全局变量sth没有初始化, 那么程序会在这里gg 
+    sthLock.UnLock()     //锁无法被释放
+}
+
+```
+
+假设**sth**这个全局变量没有做初始化, 那么程序会在range时崩溃, 然后被recover捕获, 执行完HandlePanic后,退出someInterfaceFunc函数. sthLock.UnLock() 没有被执行, 那么其他函数使用**sthUseful**, 或者这个接口再次被调用时, 程序就会陷入死锁!
+
+&nbsp;
+## <a name="t1"> 怎么避免 </a> 
+
+我们可以通过合理封装结合defer来避免这样的事情发生.
+
+
+```go
+
+type SthUseFul struct {
+    ...
+}
+
+func (s *SthUseFul) SuperMessFunc() {
+    ...
+}
+
+var sth *SthUseFul
+var sthLock sync.RWMutex
+
+
+func (as *ApiServer) someInterfaceFunc(req *http.Request) {
+	defer func() {
+		if rec := recover(); rec != nil {
+			HandlePanic(rec)
+		}
+	}()
+    doSthSuperMess(sth)
+}
+
+func doSthSuperMess(sth *SthUseFul) {
+    sthLock.Lock()
+    defer  sthLock.UnLock()  // 即使panic了, defer也会被执行
+    sth.SuperMessFunc()      // 如果全局变量sth没有初始化, 那么程序会在这里gg 
+}
+
+```
