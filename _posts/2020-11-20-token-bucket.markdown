@@ -5,7 +5,7 @@ date:   2020-12-08 21:00:00 +0530
 tags:   tbf
 categories: [分享 | Share]
 ---
-一
+流量控制必备 :star2:
 
 &nbsp;
 ## <a name="t1"> 什么是令牌桶 </a> 
@@ -49,7 +49,7 @@ tc qdisc add dev ens6 root tbf rate 1mbit  latency 20ms burst 5k
 
 ### ratelimit 优化库分享
 
-[ratelimit.go](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/go-tool-list/ratelimit/ratelimit.go)&#8195;&#8195;[ratelimit_test.go](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/go-tool-list/ratelimit/ratelimit_test.go)
+[ratelimit.go](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/go-tool-list/ratelimit/ratelimit.go)&#8195;&#8195;[ratelimit_test.go](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/go-tool-list/ratelimit/ratelimit_test.go)&#8195;&#8195;
 [reader.go](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/go-tool-list/ratelimit/reader.go)&#8195;&#8195;
 
 
