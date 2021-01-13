@@ -46,3 +46,10 @@ tc qdisc add dev ens6 root tbf rate 1mbit  latency 20ms burst 5k
 &#8195;&#8195;考虑这样一个场景, 我们根据服务的实际运营状况, 决定每秒只接收1个客户, 以防止出现拥塞等问题. 假设某一秒同时有两个请求, 根据我们的算法规定, 我们会接受一个请求, 拒绝一个请求, 但是如果恰好只是这两个请求时间冲突了, 之后几乎没有什么请求来我们的服务器, 我们的服务根本没有压力, 那么我们死板地按照算法拒绝一个请求的做法就显得不是很合理了. 
 
 令牌桶规定了请求的频率, 任何高于这个频率的请求都会被拒绝掉, 为了让算法更好应对刚才我们所说的场景, 我们需要加入一个新的参数, 延迟等待参数,  我们可以在拒绝一个请求时, 等待一个小的时间间隔, 这样当两个请求同时到来时, 如果之后没有请求了, 那们短暂的等待就可以换来一个令牌. 对于一些想尽量少的拒绝请求的服务来说,这样的做法非常的有用.
+
+### ratelimit 优化库分享
+
+[ratelimit.go](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/go-tool-list/ratelimit/ratelimit.go)&#8195;&#8195;[ratelimit_test.go](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/go-tool-list/ratelimit/ratelimit_test.go)
+[reader.go](https://raw.githubusercontent.com/SonderEASE/lewis-blog.io/master/BlogCode/go-tool-list/ratelimit/reader.go)&#8195;&#8195;
+
+
